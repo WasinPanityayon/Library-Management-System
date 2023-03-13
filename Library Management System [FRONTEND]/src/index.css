@@ -78,4 +78,45 @@
   color: var(--LINK-HOVER);
   }
 
-/* || GENERAL STYLES */
+/* GENERAL STYLES */
+
+/* HOMEPAGE STYLES */
+
+.layout {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    top: 0px;
+    background-size: cover;
+    overflow: hidden;
+  }
+
+  .homepage_container {
+    padding: 0.75em 0.5em 0.5em;
+    flex-grow: 1;
+  }
+
+  .detail {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  
+  .detail_text {
+    display: flex;
+    padding-top: 1vw;
+    padding-right: 9vw;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 3vw;
+    text-decoration: none;
+    color: #675454;
+  }
+
+/* HOMEPAGE STYLES */
+
+  
+
