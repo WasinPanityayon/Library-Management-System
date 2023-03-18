@@ -465,3 +465,72 @@
   }
 
 /* SIGNIN/SIGNUP AUTHEN STYLES */
+
+/* DASHBOARD LEFT STYLES */
+
+.dashboard_left{
+  display: grid;
+  font-size: 2vw;
+  height:fit-content;
+}
+
+.dashboard_left .manu{
+  display: flex;
+  flex-flow: column;
+  justify-content:flex-start;
+  padding-left: 3vw;
+  padding-bottom: 3vw;
+}
+
+.dashboard_left .manu_logout{
+  display: flex;
+  flex-flow: column;
+  justify-content:flex-end;
+  padding-left: 3vw;
+  padding-bottom: 3vw;
+}
+
+.dashboard_left .icon_user {
+  display: flex;
+  align-items: center;
+  border: none;
+  padding-left: 1vw;
+  height: 15vw;
+  width: 28vw;
+}
+
+.dashboard_left .icon_user_nav {
+  font-size: 10vw;
+  background-color: transparent;
+  color: black;
+  padding-right: 1.5vw;
+}
+
+.icon_user .text {
+  color: black;
+}
+
+.dashboard_left_nav {
+  gap: 1vw;
+}
+
+.dashboard_left_nav .button_og {
+  background-color: transparent;
+  border: none;
+  color: #675454;
+  display: flex;
+  align-items: center;
+  padding-bottom: 1vw;
+}
+
+.dashboard_left_nav .button_og:hover,
+.dashboard_left_nav .button_og:focus-visible {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.dashboard_left_nav .button_og[disabled] {
+  visibility: hidden;
+}
+
+/* DASHBOARD LEFT STYLES */
