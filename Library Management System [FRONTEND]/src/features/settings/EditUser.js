@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import PulseLoader from 'react-spinners/PulseLoader'
 import EditUserForm from './EditUserForm'
-import { useGetUsersQuery } from './usersApiSlice'
+import { useGetUsersQuery } from '../users/usersApiSlice'
 import useTitle from '../../hooks/useTitle'
 
 const EditUser = () => {

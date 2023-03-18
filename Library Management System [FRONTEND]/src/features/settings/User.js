@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate } from 'react-router-dom'
 import { memo } from 'react'
-import { useGetUsersQuery } from './usersApiSlice'
+import { useGetUsersQuery } from '../users/usersApiSlice'
 
 const User = ({ userId }) => {
 

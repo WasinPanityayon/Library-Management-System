@@ -1,5 +1,5 @@
 import PulseLoader from 'react-spinners/PulseLoader'
-import { useGetBooksQuery } from "./booksApiSlice"
+import { useGetBooksQuery } from "../books/booksApiSlice"
 import Book from "./Book"
 import useTitle from "../../hooks/useTitle"
 

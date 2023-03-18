@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import PulseLoader from 'react-spinners/PulseLoader'
 import EditBookForm from './EditBookForm'
-import { useGetBooksQuery } from './booksApiSlice'
+import { useGetBooksQuery } from '../books/booksApiSlice'
 import useTitle from '../../hooks/useTitle'
 
 const EditBook = () => {

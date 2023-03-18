@@ -16,13 +16,14 @@ import NewBook from './features/books/NewBook';
 import EditBooklib from './features/books/EditBooklib';
 import Usercheck from './features/users/Usercheck';
 import EditCurrentUser from './features/users/EditCurrentUser';
+import Settings from './features/settings/Settings';
+import UsersList from './features/settings/UsersList';
+import EditUser from './features/settings/EditUser';
+import NewUserForm from './features/settings/NewUserForm';
+import BooksList from './features/settings/BooksList';
+import EditBook from './features/settings/EditBook';
+import NewBookForm from './features/settings/NewBookForm';
 
-import UsersList from './features/users/UsersList'
-import BooksList from './features/books/BooksList'
-import NewUserForm from './features/users/NewUserForm'
-import EditUser from './features/users/EditUser'
-import NewBookForm from './features/books/NewBookForm'
-import EditBook from './features/books/EditBook'
 import useTitle from './hooks/useTitle';
 
 function App() {
@@ -55,30 +56,24 @@ function App() {
                 </Route>
 
                 <Route element={<Dashboard />}>
-                    <Route path="new" element={<NewBook />} />
                   <Route path="settings">
-
+                    <Route index element={<Settings />} />
+                    <Route path="userslist">
+                      <Route index element={<UsersList />} />
+                      <Route path=":id" element={<EditUser />} />
+                      <Route path="new" element={<NewUserForm />} />
+                    </Route>
+                    <Route path="bookslist">
+                      <Route index element={<BooksList />} />
+                      <Route path=":id" element={<EditBook />} />
+                      <Route path="new" element={<NewBookForm />} />
+                    </Route>
                   </Route>
                   <Route path="users">
                     <Route index element={<Usercheck />} />
                     <Route path=":id" element={<EditCurrentUser />} />
                   </Route>
                 </Route>
-
-
-
-                <Route path="/dash/userslist">
-                  <Route index element={<UsersList />} />
-                  <Route path="new" element={<NewUserForm />} />
-                  <Route path=":id" element={<EditUser />} />
-                </Route>
-                <Route path="/dash/bookslist">
-                  <Route index element={<BooksList />} />
-                  <Route path="new" element={<NewBookForm />} />
-                  <Route path=":id" element={<EditBook />} />
-                </Route>
-
-
 
               </Route>
             </Route>

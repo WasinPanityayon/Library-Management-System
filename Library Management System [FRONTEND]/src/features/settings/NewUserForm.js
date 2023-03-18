@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave } from "@fortawesome/free-solid-svg-icons"
-import { useAddNewUserMutation } from "./usersApiSlice"
+import { useAddNewUserMutation } from "../users/usersApiSlice"
 import { ROLES } from "../../config/roles"
 import useTitle from "../../hooks/useTitle"
 

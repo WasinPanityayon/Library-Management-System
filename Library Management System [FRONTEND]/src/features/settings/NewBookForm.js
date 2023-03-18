@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave } from "@fortawesome/free-solid-svg-icons"
-import { useAddNewBookMutation } from "./booksApiSlice"
+import { useAddNewBookMutation } from "../books/booksApiSlice"
 import useTitle from '../../hooks/useTitle'
 
 const NewBookForm = () => {
