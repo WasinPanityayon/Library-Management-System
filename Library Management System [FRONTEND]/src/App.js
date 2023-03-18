@@ -5,6 +5,8 @@ import Signin from './features/auth/Signin'
 import Signup from './features/auth/Signup'
 import UsersList from './features/users/UsersList'
 import BooksList from './features/books/BooksList'
+import NewUserForm from './features/users/NewUserForm'
+import EditUser from './features/users/EditUser'
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path="dash" element={<Homepage />} />
             <Route path="/dash/userslist">
               <Route index element={<UsersList />} />
+              <Route path="new" element={<NewUserForm />} />
+              <Route path=":id" element={<EditUser />} />
             </Route>
             <Route path="/dash/bookslist">
               <Route index element={<BooksList />} />
