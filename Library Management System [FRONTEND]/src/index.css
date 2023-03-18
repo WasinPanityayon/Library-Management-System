@@ -44,6 +44,27 @@
     visibility: hidden;
   }
 
+  .icon-button {
+    width: 48px;
+    height: 48px;
+    font-size: 2.5rem;
+    background-color: transparent;
+    border: none;
+    color: var(black);
+    display: grid;
+    place-content: center;
+  }
+  
+  .icon-button:hover,
+  .icon-button:focus-visible {
+    transform: scale(1.2);
+    cursor: pointer;
+  }
+  
+  .icon-button[disabled] {
+    visibility: hidden;
+  }
+
   body {
     font-family: 'Nunito', sans-serif;
     min-height: 100vh;
@@ -238,3 +259,46 @@
   }
 
 /* HOMEPAGE FOOTER STYLES */
+
+/* USERSLIST STYLES */
+
+  thead,
+  tbody,
+  tr {
+    display: contents;
+  }
+
+  .table {
+    font-size: 1rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 12.9vw 12.9vw 12.9vw 12.9vw 12.9vw;
+    color: #000;
+    gap: 0.1em;
+  }
+
+  .table__thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  .table__th,
+  .table__cell {
+    background-color: #FFF;
+    text-align: center;
+    border: 1px solid #000;
+    padding: 0.5em;
+    overflow: hidden;
+  }
+
+  .table__cell:last-child {
+    display: grid;
+    place-content: center;
+  }
+  
+  .table__cell--inactive {
+    background-color: var(--INACTIVE);
+  }
+
+/* USERSLIST STYLES */
