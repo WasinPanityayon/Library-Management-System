@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import useTitle from '../../hooks/useTitle'
 
 const Settings = () => {
-    useTitle('Library Management System')
+    useTitle('LMS | SETTINGS')
 
     const navigate = useNavigate()
     const onbookslisttableClicked = () => navigate('/settings/bookslist')

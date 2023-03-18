@@ -3,6 +3,8 @@ import { useUpdateUserMutation, useDeleteUserMutation } from "../users/usersApiS
 import { useNavigate } from "react-router-dom"
 import { ROLES } from "../../config/roles"
 import useAuth from "../../hooks/useAuth"
+import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const NAME_REGEX = /^[A-z]{1,50}$/
 const USER_REGEX = /^[A-z0-9]{3,20}$/
@@ -151,18 +153,6 @@ const EditUserForm = ({ user }) => {
             </>
         )
     }
-    let deletebutton = null
-    if (isAdmin){
-        deletebutton = (
-            <button
-                className="button_og"
-                title="Delete"
-                onClick={onDeleteUserClicked}
-            >
-                Delete
-            </button>
-        )
-    }
 
     const content = (
         <>
@@ -171,6 +161,23 @@ const EditUserForm = ({ user }) => {
             <form className="form" onSubmit={e => e.preventDefault()}>
                 <div className="form__title-row">
                     <h2>Edit User</h2>
+                    <div className="form__action-buttons">
+                        <button
+                            className="icon-button"
+                            title="Save"
+                            onClick={onSaveUserClicked}
+                            disabled={!canSave}
+                        >
+                            <FontAwesomeIcon icon={faSave} />
+                        </button>
+                        <button
+                            className="icon-button"
+                            title="Delete"
+                            onClick={onDeleteUserClicked}
+                        >
+                            <FontAwesomeIcon icon={faTrashCan} />
+                        </button>
+                    </div>
                 </div>
                 <label className="form__label" htmlFor="firstname">
                     Username: <span className="nowrap">[3-20 letters]</span></label>
@@ -218,17 +225,6 @@ const EditUserForm = ({ user }) => {
                 />
                 {rolesselect}
             </form>
-            <div className="edituserform">
-                <button
-                    className="button_og"
-                    title="Save"
-                    onClick={onSaveUserClicked}
-                    disabled={!canSave}
-                >
-                    Save
-                </button>
-                {deletebutton}
-            </div>
         </>
     )
 

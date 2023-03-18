@@ -100,6 +100,54 @@
     cursor: pointer;
   }
 
+  @media screen and (max-width: 400px) {
+    h1 {
+      font-size: 2vw;
+    }
+  
+    .dash-header__nav {
+      gap: 0;
+    }
+  
+    .icon-button {
+      font-size: 1.5rem;
+    }
+  }
+  
+  
+  @media screen and (min-width: 768px) {
+  
+    body {
+      font-size: 1.25rem;
+    }
+  
+    .dash-header {
+      padding: 0 1em;
+    }
+  
+    .dash-container {
+      padding: 1em;
+    }
+  
+    .table {
+      font-size: 1.5rem;
+    }
+  
+    .table--notes {
+      grid-template-columns: repeat(3, 1fr) 2fr repeat(2, 1fr);
+    }
+  
+    .note__created,
+    .note__updated,
+    .note__username {
+      display: block
+    }
+  
+    .form__action-buttons {
+      position: static;
+    }
+  }
+
 /* GENERAL STYLES */
 
 /* HOMEPAGE STYLES */
@@ -273,7 +321,7 @@
     font-size: 1rem;
     width: 100%;
     display: grid;
-    grid-template-columns: 12.9vw 12.9vw 12.9vw 12.9vw 12.9vw;
+    grid-template-columns: 13.5vw 13.5vw 13.5vw 13.5vw 13.5vw;
     color: #000;
     gap: 0.1em;
   }

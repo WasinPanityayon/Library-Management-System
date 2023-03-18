@@ -104,7 +104,7 @@ const EditCurrentUserForm = ({ user }) => {
     const onPasswordChanged = e => setPassword(e.target.value)
     const onConfirmPasswordChanged = e => setConfirmPassword(e.target.value)
 
-    if (isLoading) return <PulseLoader color={"#FFF"} />
+    if (isLoading) return <PulseLoader color={"#000"} />
 
 
     const onSaveUserClicked = async (e) => {

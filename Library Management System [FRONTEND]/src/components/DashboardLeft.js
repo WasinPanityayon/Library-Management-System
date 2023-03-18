@@ -96,7 +96,7 @@ const DashboardLeft = () => {
 
     let buttonContentTop
     if (isLoading) {
-        buttonContentTop = <PulseLoader color={"#FFF"} />
+        buttonContentTop = <PulseLoader color={"#000"} />
     } else {
         buttonContentTop = (
             <>
@@ -110,7 +110,7 @@ const DashboardLeft = () => {
 
     let buttonContentBottom
     if (isLoading) {
-        buttonContentBottom = <PulseLoader color={"#FFF"} />
+        buttonContentBottom = <PulseLoader color={"#000"} />
     } 
     else {
         buttonContentBottom = (

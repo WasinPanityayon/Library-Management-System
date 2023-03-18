@@ -111,7 +111,7 @@ const HomepageHeader = () => {
 
     let buttonContentLeft
     if (isLoading) {
-        buttonContentLeft = <PulseLoader color={"#FFF"} />
+        buttonContentLeft = <PulseLoader color={"#000"} />
     } 
     else {
         buttonContentLeft = (
@@ -125,7 +125,7 @@ const HomepageHeader = () => {
 
     let buttonContentRight
     if (isLoading) {
-        buttonContentRight = <PulseLoader color={"#FFF"} />
+        buttonContentRight = <PulseLoader color={"#000"} />
     } 
     else {
         buttonContentRight = (

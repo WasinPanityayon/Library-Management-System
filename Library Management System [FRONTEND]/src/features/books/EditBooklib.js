@@ -15,7 +15,7 @@ const EditBooklib = () => {
         }),
     })
 
-    if (!book) return <PulseLoader color={"#FFF"} />
+    if (!book) return <PulseLoader color={"#000"} />
 
     const content = 
     <>

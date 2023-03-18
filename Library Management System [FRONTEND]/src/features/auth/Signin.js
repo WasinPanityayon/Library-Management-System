@@ -83,7 +83,7 @@ const Signin = () => {
     const handlePwdInput = (e) => setPassword(e.target.value)
     const handleToggle = () => setPersist(prev => !prev)
 
-    if (isLoading) return <PulseLoader color={"#FFF"} />
+    if (isLoading) return <PulseLoader color={"#000"} />
 
     const content = (
         <section className="public_signin">

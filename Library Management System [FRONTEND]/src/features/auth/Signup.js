@@ -125,7 +125,7 @@ const Signup = () => {
     const onConfirmPasswordChanged = e => setConfirmPassword(e.target.value)
     const handleToggle = () => setPersist(prev => !prev)
 
-    if (isLoading) return <PulseLoader color={"#FFF"} />
+    if (isLoading) return <PulseLoader color={"#000"} />
 
     const canSave = [roles.length, validFirstname, validSurname, validUsername, validPassword, validConfirmPassword, CheckConfirmPassword].every(Boolean) && !isLoading
 
