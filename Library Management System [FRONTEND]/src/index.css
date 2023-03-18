@@ -731,3 +731,40 @@
   }
 
 /* BOOKS INFO PAGE STYLES */
+
+/* USER INFO PAGE STYLES */
+
+.currentuser {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 3vw;
+  gap: 1vw;
+}
+.currentuser .icon {
+  font-size: 13vw;
+}
+
+.currentuser .button_og {
+  font-size: 1.5vw;
+  background-color: #f76d6d;
+  border: none;
+  color: black;
+  align-items: center;
+  text-align: center;
+  padding: 0.5vw 1.5vw;
+  border-radius: 1.5em;
+  width: 20vw;
+}
+
+.currentuser .button_og:hover,
+.currentuser .button_og:focus-visible {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.currentuser .button_og[disabled] {
+  visibility: hidden;
+}
+
+/* USER INFO PAGE STYLES */
