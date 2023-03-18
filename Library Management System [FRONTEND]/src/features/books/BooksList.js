@@ -1,5 +1,6 @@
-import { useGetBooksQuery } from "./booksApiSlice"
+import { useGetBooksQuery } from "../books/booksApiSlice"
 import Book from "./Book"
+import PulseLoader from 'react-spinners/PulseLoader'
 
 const BooksList = () => {
     const {
@@ -13,10 +14,10 @@ const BooksList = () => {
         refetchOnFocus: true,
         refetchOnMountOrArgChange: true
     })
-    
+
     let content
 
-    if (isLoading) content = <p>Loading...</p>
+    if (isLoading) content = <PulseLoader color={"#FFF"} />
 
     if (isError) {
         content = <p className="errmsg">{error?.data?.message}</p>
@@ -47,6 +48,5 @@ const BooksList = () => {
     }
 
     return content
-    
 }
 export default BooksList

@@ -1,18 +1,21 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate } from 'react-router-dom'
-
-import { useSelector } from 'react-redux'
-import { selectBookById } from './booksApiSlice'
+import { useGetBooksQuery } from '../books/booksApiSlice'
+import { memo } from 'react'
 
 const Book = ({ bookId }) => {
 
-    const book = useSelector(state => selectBookById(state, bookId))
+    const { book } = useGetBooksQuery("booksList", {
+        selectFromResult: ({ data }) => ({
+            book: data?.entities[bookId]
+        }),
+    })
 
     const navigate = useNavigate()
 
     if (book) {
-        const handleEdit = () => navigate(`/dash/bookslist/${bookId}`)
+        const handleEdit = () => navigate(`/settings/bookslist/${bookId}`)
 
         return (
             <tr className="table__row">
@@ -40,4 +43,6 @@ const Book = ({ bookId }) => {
     } else return null
 }
 
-export default Book
+const memoizedbook = memo(Book)
+
+export default memoizedbook

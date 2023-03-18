@@ -1,13 +1,15 @@
 import { useRef, useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import PulseLoader from 'react-spinners/PulseLoader'
+import { toast } from 'react-toastify';
 import { setCredentials } from './authSlice'
 import { useSigninMutation } from './authApiSlice'
 import usePersist from '../../hooks/usePersist'
-import PulseLoader from 'react-spinners/PulseLoader'
-import { toast } from 'react-toastify';
+import useTitle from '../../hooks/useTitle'
 
 const Signin = () => {
+    useTitle('LMS | SIGN IN')
 
     const userRef = useRef()
     const errRef = useRef()

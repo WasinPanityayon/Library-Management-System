@@ -13,11 +13,12 @@ const initialState = booksAdapter.getInitialState()
 export const booksApiSlice = apiSlice.injectEndpoints({
     endpoints: builder => ({
         getBooks: builder.query({
-            query: () => '/books',
-            validateStatus: (response, result) => {
-                return response.status === 200 && !result.isError
-            },
-            keepUnusedDataFor: 5,
+            query: () => ({
+                url: '/books',
+                validateStatus: (response, result) => {
+                    return response.status === 200 && !result.isError
+                },
+            }),
             transformResponse: responseData => {
                 const loadedBooks = responseData.map(book => {
                     book.id = book._id

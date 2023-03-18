@@ -1,18 +1,20 @@
 import { useRef, useState, useEffect } from "react"
 import { useNavigate, Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import PulseLoader from 'react-spinners/PulseLoader'
+import { toast } from 'react-toastify';
 import { useAddNewUserMutation } from "../users/usersApiSlice"
 import { setCredentials } from './authSlice'
 import { useSigninMutation } from './authApiSlice'
+import useTitle from "../../hooks/useTitle"
 import usePersist from '../../hooks/usePersist'
-import PulseLoader from 'react-spinners/PulseLoader'
-import { toast } from 'react-toastify';
 
 const NAME_REGEX = /^[A-z]{1,50}$/
 const USER_REGEX = /^[A-z0-9]{3,20}$/
 const PWD_REGEX = /^[A-z0-9!@#$%*_.-]{4,12}$/
 
 const Signup = () => {
+    useTitle('LMS | SIGN UP')
 
     const [addNewUser, {
         isSuccess,

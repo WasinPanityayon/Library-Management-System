@@ -1,7 +1,9 @@
+import useTitle from '../hooks/useTitle'
 import HomepageFooter from './HomepageFooter'
 import HomepageHeader from './HomepageHeader'
 
 const Homepage = () => {
+    useTitle('LMS | HOMEPAGE')
     return (
         <section className='layout'>
             <>
