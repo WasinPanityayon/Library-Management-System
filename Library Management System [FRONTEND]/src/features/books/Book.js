@@ -12,7 +12,7 @@ const Book = ({ bookId }) => {
     const navigate = useNavigate()
 
     if (book) {
-        const handleEdit = () => navigate(`/settings/bookslist/${bookId}`)
+        const handleEdit = () => navigate(`/dash/bookslist/${bookId}`)
 
         return (
             <tr className="table__row">

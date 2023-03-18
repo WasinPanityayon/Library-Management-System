@@ -7,6 +7,8 @@ import UsersList from './features/users/UsersList'
 import BooksList from './features/books/BooksList'
 import NewUserForm from './features/users/NewUserForm'
 import EditUser from './features/users/EditUser'
+import NewBookForm from './features/books/NewBookForm'
+import EditBook from './features/books/EditBook'
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
             </Route>
             <Route path="/dash/bookslist">
               <Route index element={<BooksList />} />
+              <Route path="new" element={<NewBookForm />} />
+              <Route path=":id" element={<EditBook />} />
             </Route>
 
 
