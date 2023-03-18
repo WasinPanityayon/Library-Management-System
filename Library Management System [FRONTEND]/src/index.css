@@ -768,3 +768,40 @@
 }
 
 /* USER INFO PAGE STYLES */
+
+/* SETTINGS PAGE STYLES */
+
+.settings {
+  display: flex;
+  flex-flow: column;
+  justify-content:flex-start;
+}
+
+.settings .settings_nav{
+  padding-top: 1vw;
+
+}
+
+.settings .button_og {
+  font-size: 1.5vw;
+  background-color: #f76d6d;
+  border: none;
+  color: black;
+  display: flex;
+  align-items: center;
+  padding: 0.5vw 1.5vw;
+  border-radius: 1.5em;
+  width: 20vw;
+}
+
+.settings .button_og:hover,
+.settings .button_og:focus-visible {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.settings .button_og[disabled] {
+  visibility: hidden;
+}
+
+/* SETTINGS PAGE STYLES */
