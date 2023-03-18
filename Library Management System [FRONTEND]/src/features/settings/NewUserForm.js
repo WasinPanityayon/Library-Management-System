@@ -5,6 +5,7 @@ import { faSave } from "@fortawesome/free-solid-svg-icons"
 import { useAddNewUserMutation } from "../users/usersApiSlice"
 import { ROLES } from "../../config/roles"
 import useTitle from "../../hooks/useTitle"
+import { toast } from "react-toastify"
 
 const NAME_REGEX = /^[A-z]{1,50}$/
 const USER_REGEX = /^[A-z0-9]{3,20}$/
@@ -56,8 +57,31 @@ const NewUserForm = () => {
             setPassword('')
             setRoles([])
             navigate('/users')
+            toast.dismiss()
+            toast.success('New account has been add.', {
+                position: "bottom-right",
+                autoClose: 3000,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         }
     }, [isSuccess, navigate])
+
+    useEffect(() => {
+        if(isError) {
+            toast.dismiss()
+            toast.error(error?.data?.message, {
+                position: "bottom-right",
+                autoClose: 10000,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+    }, [isError, error?.data?.message])
 
     const onFirstnameChanged = e => setFirstname(e.target.value)
     const onSurnameChanged = e => setSurname(e.target.value)
@@ -91,7 +115,6 @@ const NewUserForm = () => {
         )
     })
 
-    const errClass = isError ? "errmsg" : "offscreen"
     const validFirstnameClass = !validFirstname ? 'form__input--incomplete' : ''
     const validSurnameClass = !validSurname ? 'form__input--incomplete' : ''
     const validUserClass = !validUsername ? 'form__input--incomplete' : ''
@@ -101,8 +124,6 @@ const NewUserForm = () => {
 
     const content = (
         <>
-            <p className={errClass}>{error?.data?.message}</p>
-
             <form className="form" onSubmit={onSaveUserClicked}>
                 <div className="form__title-row">
                     <h2>New User</h2>

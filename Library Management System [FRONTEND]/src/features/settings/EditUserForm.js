@@ -5,6 +5,7 @@ import { ROLES } from "../../config/roles"
 import useAuth from "../../hooks/useAuth"
 import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { toast } from "react-toastify"
 
 const NAME_REGEX = /^[A-z]{1,50}$/
 const USER_REGEX = /^[A-z0-9]{3,20}$/
@@ -22,8 +23,6 @@ const EditUserForm = ({ user }) => {
 
     const [deleteUser, {
         isSuccess: isDelSuccess,
-        isError: isDelError,
-        error: delerror
     }] = useDeleteUserMutation()
 
     const navigate = useNavigate()
@@ -64,9 +63,43 @@ const EditUserForm = ({ user }) => {
             setPassword('')
             setRoles([])
             navigate('/settings/userslist')
+            if (isSuccess) {
+                toast.success('Update account successful.', {
+                    position: "bottom-right",
+                    autoClose: 3000,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            }
+            if (isDelSuccess) {
+                toast.success('Delete account successful.', {
+                    position: "bottom-right",
+                    autoClose: 3000,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            }
         }
 
     }, [isSuccess, isDelSuccess, navigate])
+
+    useEffect(() => {
+        if(isError) {
+            toast.dismiss()
+            toast.error(error?.data?.message, {
+                position: "bottom-right",
+                autoClose: 10000,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+    }, [isError, error?.data?.message])
 
     const onFirstnameChanged = e => setFirstname(e.target.value)
     const onSurnameChanged = e => setSurname(e.target.value)
@@ -112,14 +145,11 @@ const EditUserForm = ({ user }) => {
         canSave = [roles.length, validFirstname, validSurname, validUsername].every(Boolean) && !isLoading
     }
 
-    const errClass = (isError || isDelError) ? "errmsg" : "offscreen"
     const validFirstnameClass = !validFirstname ? 'public_form__input--incomplete' : ''
     const validSurnameClass = !validSurname ? 'public_form__input--incomplete' : ''
     const validUserClass = !validUsername ? 'form__input--incomplete' : ''
     const validPwdClass = password && !validPassword ? 'form__input--incomplete' : ''
     const validRolesClass = !Boolean(roles.length) ? 'form__input--incomplete' : ''
-
-    const errContent = (error?.data?.message || delerror?.data?.message) ?? ''
 
     let rolesselect = null
     if (isAdmin){
@@ -156,7 +186,6 @@ const EditUserForm = ({ user }) => {
 
     const content = (
         <>
-            <p className={errClass}>{errContent}</p>
 
             <form className="form" onSubmit={e => e.preventDefault()}>
                 <div className="form__title-row">

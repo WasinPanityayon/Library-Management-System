@@ -2,6 +2,7 @@ import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"
 import { useDeleteBookMutation, useUpdateBookMutation } from "../books/booksApiSlice"
 
 const EditBooklibForm = ({ book }) => {
@@ -34,6 +35,26 @@ const EditBooklibForm = ({ book }) => {
             setAuthor('')
             setIsbn('')
             navigate('/settings/bookslist')
+            if (isSuccess) {
+                toast.success('Update Book successful.', {
+                    position: "bottom-right",
+                    autoClose: 3000,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            }
+            if (isDelSuccess) {
+                toast.success('Remove Book successful.', {
+                    position: "bottom-right",
+                    autoClose: 3000,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            }
         }
 
     }, [isSuccess, isDelSuccess, navigate])

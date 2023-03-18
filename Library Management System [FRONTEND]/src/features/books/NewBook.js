@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLongArrowLeft } from "@fortawesome/free-solid-svg-icons"
 import { useAddNewBookMutation } from "./booksApiSlice"
 import useTitle from '../../hooks/useTitle'
+import { toast } from "react-toastify"
 
 const NewBook = () => {
     useTitle('LMS | NEW BOOK')
@@ -29,6 +30,14 @@ const NewBook = () => {
             setAuthor('')
             setIsbn('')
             navigate('/books')
+            toast.success('New book has been add.', {
+                position: "bottom-right",
+                autoClose: 3000,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         }
     }, [isSuccess, navigate])
 
