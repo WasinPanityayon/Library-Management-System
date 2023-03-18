@@ -11,6 +11,8 @@ import NewBookForm from './features/books/NewBookForm'
 import EditBook from './features/books/EditBook'
 import Prefetch from './features/auth/Prefetch'
 import PersistSignin from './features/auth/PersistSignin'
+import RequireAuth from './features/auth/RequireAuth'
+import { ROLES } from './config/roles'
 
 function App() {
   return (
@@ -21,16 +23,18 @@ function App() {
         <Route path="signup" element={<Signup />} />
           <Route path="dash" element={<Homepage />} />
           <Route element={<PersistSignin />}>
-            <Route element={<Prefetch />}>
-              <Route path="/dash/userslist">
-                <Route index element={<UsersList />} />
-                <Route path="new" element={<NewUserForm />} />
-                <Route path=":id" element={<EditUser />} />
-              </Route>
-              <Route path="/dash/bookslist">
-                <Route index element={<BooksList />} />
-                <Route path="new" element={<NewBookForm />} />
-                <Route path=":id" element={<EditBook />} />
+            <Route element={<RequireAuth allowedRoles={[...Object.values(ROLES)]} />}>
+              <Route element={<Prefetch />}>
+                <Route path="/dash/userslist">
+                  <Route index element={<UsersList />} />
+                  <Route path="new" element={<NewUserForm />} />
+                  <Route path=":id" element={<EditUser />} />
+                </Route>
+                <Route path="/dash/bookslist">
+                  <Route index element={<BooksList />} />
+                  <Route path="new" element={<NewBookForm />} />
+                  <Route path=":id" element={<EditBook />} />
+                </Route>
               </Route>
             </Route>
           </Route>
