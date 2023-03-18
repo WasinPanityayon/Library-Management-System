@@ -405,7 +405,7 @@
     display: flex;
     flex-flow: column;
     gap: 0.5em;
-    min-width: 30vw;
+    min-width: 32vw;
   }
 
   .public_form__input{
@@ -594,14 +594,14 @@
     border: 0;
     background-color: #D9D9D9;
     border-radius: 15px;
-    border: 1px solid var(--TABLE-COLOR);
+    border: 1px solid #000;
   }
 
   .table_show {
     width: 100%;
     display: grid;
     grid-template-columns: 15vw 15vw 15vw 15vw;
-    color: var(--TABLE-COLOR);
+    color: #000;
     gap: 2.5vw;
   }
   
@@ -641,7 +641,7 @@
 
   .showbook {
     height: 25vw;
-    background-color: var(--TABLE-BGCOLOR);
+    background-color: #FFF;
     font-size: 1vw;
     text-align: center;
     border: 0px;
@@ -657,7 +657,77 @@
   .showbookimg {
     width: 14vw;
     height: 22vw;
-    border: 1px solid var(--TABLE-COLOR);
+    border: 1px solid #000;
   }
 
 /* BOOKS PAGE STYLES */
+
+/* BOOKS INFO PAGE STYLES */
+
+  .bookdetail_header {
+    position: sticky;
+    height: 8vw;
+    top: 0;
+    z-index: 1;
+    padding-top: 2vw;
+    padding-left: 4vw;
+    padding-right: 4vw;
+    padding-bottom: 2vw;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(246, 204, 167, 0.67);;
+    font-size: 1.2vw;
+  }
+
+  .bookdetail_header .icon_button {
+    font-size: 2.5vw;
+    background-color: transparent;
+    border: none;
+    color: black;;
+    display: flex;
+    align-items: center;
+  }
+  
+  .bookdetail_header .icon_button:hover,
+  .bookdetail_header .icon_button:focus-visible {
+    transform: scale(1.2);
+    cursor: pointer;
+  }
+  
+  .bookdetail_header .icon_button[disabled] {
+    visibility: hidden;
+  }
+
+  .bookdetail_main {
+    font-size: 1.5vw;
+    padding-top: 1vw;
+    padding-left: 25vw;
+    padding-right: 25vw;
+  }
+
+  .bookdetail_main .showbookimg {
+    width: 20vw;
+    height: 32vw;
+    border: 1px solid #000;
+  }
+
+  .bookdetail_row {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vw;
+    background-color: #D9D9D9;
+    border-radius: 15px;
+  }
+
+  .newbook_main {
+    font-size: 1.5vw;
+    padding-top: 1vw;
+    padding-left: 33vw;
+    padding-right: 33vw;
+  }
+
+/* BOOKS INFO PAGE STYLES */
