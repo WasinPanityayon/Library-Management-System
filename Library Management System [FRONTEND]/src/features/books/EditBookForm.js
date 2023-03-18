@@ -2,7 +2,7 @@ import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { useDeleteBookMutation, useUpdateBookMutation } from "../books/booksApiSlice"
+import { useDeleteBookMutation, useUpdateBookMutation } from "./booksApiSlice"
 
 const EditBookForm = ({ book }) => {
 

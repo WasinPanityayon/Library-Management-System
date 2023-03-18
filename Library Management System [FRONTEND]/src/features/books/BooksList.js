@@ -1,8 +1,11 @@
-import { useGetBooksQuery } from "../books/booksApiSlice"
-import Book from "./Book"
 import PulseLoader from 'react-spinners/PulseLoader'
+import { useGetBooksQuery } from "./booksApiSlice"
+import Book from "./Book"
+import useTitle from "../../hooks/useTitle"
 
 const BooksList = () => {
+    useTitle('LMS | BOOKS LIST')
+
     const {
         data: books,
         isLoading,

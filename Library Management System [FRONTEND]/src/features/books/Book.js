@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate } from 'react-router-dom'
-import { useGetBooksQuery } from '../books/booksApiSlice'
 import { memo } from 'react'
+import { useGetBooksQuery } from './booksApiSlice'
 
 const Book = ({ bookId }) => {
 

@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { useAddNewBookMutation } from "../books/booksApiSlice"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave } from "@fortawesome/free-solid-svg-icons"
+import { useAddNewBookMutation } from "./booksApiSlice"
+import useTitle from '../../hooks/useTitle'
 
 const NewBookForm = () => {
+    useTitle('LMS | NEW BOOK')
 
     const [addNewBook, {
         isLoading,
