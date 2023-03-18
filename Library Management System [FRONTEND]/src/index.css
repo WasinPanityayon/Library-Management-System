@@ -91,12 +91,12 @@
   }
 
   a:any-link {
-  color: var(--LINK-COLOR);
+  color: whitesmoke;
   }
 
   a:hover,
   a:focus-visible {
-  color: var(--LINK-HOVER);
+  color: rgba(245, 245, 245, 0.9);
   }
 
 /* GENERAL STYLES */
@@ -176,35 +176,35 @@
   }
 
   .homepage_header_container .button_og:hover,
-.homepage_header_container .button_og:focus-visible {
-  transform: scale(1.2);
-  cursor: pointer;
-}
+  .homepage_header_container .button_og:focus-visible {
+    transform: scale(1.2);
+    cursor: pointer;
+  }
 
-.homepage_header_container .button_og[disabled] {
-  visibility: hidden;
-}
+  .homepage_header_container .button_og[disabled] {
+    visibility: hidden;
+  }
 
-.homepage_header_container .button_signin {
-  font-size: 2vw;
-  background-color: #36BBCD;
-  border: none;
-  color: white;
-  display: flex;
-  align-items: center;
-  padding: 0.5vw 1.5vw;
-  border-radius: 1.5em;
-}
+  .homepage_header_container .button_signin {
+    font-size: 2vw;
+    background-color: #36BBCD;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 0.5vw 1.5vw;
+    border-radius: 1.5em;
+  }
 
-.homepage_header_container .button_signin:hover,
-.homepage_header_container .button_signin:focus-visible {
-  transform: scale(1.2);
-  cursor: pointer;
-}
+  .homepage_header_container .button_signin:hover,
+  .homepage_header_container .button_signin:focus-visible {
+    transform: scale(1.2);
+    cursor: pointer;
+  }
 
-.homepage_header_container .button_signin[disabled] {
-  visibility: hidden;
-}
+  .homepage_header_container .button_signin[disabled] {
+    visibility: hidden;
+  }
 
 /* HOMEPAGE HEADER STYLES */
 
@@ -298,7 +298,7 @@
   }
   
   .table__cell--inactive {
-    background-color: var(--INACTIVE);
+    background-color: lightgray;
   }
 
   .book__img {
@@ -310,8 +310,55 @@
     width: 100%;
     display: grid;
     grid-template-columns: 11vw 11vw 11vw 11vw 11vw 11vw;
-    color: var(--TABLE-COLOR);
+    color:  #000;
     gap: 0.1vw;
   }
 
 /* USERSLIST STYLES AND BOOKSLIST STYLES */
+
+/* FORM NEWUSER STYLES */
+
+  .form {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 0.75em;
+    max-width: 800px;
+    padding-bottom: 1vw;
+  }
+
+  .form__title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .form__action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5em;
+    position: absolute;
+    right: 0.5em;
+  }
+
+  .form__input,
+  .form__submit-button {
+    padding: 0.5em;
+    border-radius: 15px;
+  }
+
+  .form__input--text {
+    min-height: 150px;
+  }
+
+  .form__select {
+    width: fit-content;
+    padding: 0.25em;
+  }
+
+  .form__input--incomplete {
+    border: 1px solid #F00;
+    outline: 1px solid #F00;
+  }
+
+/* FORM NEWUSER STYLES */
