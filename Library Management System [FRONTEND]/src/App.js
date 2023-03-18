@@ -10,6 +10,7 @@ import PersistSignin from './features/auth/PersistSignin'
 import RequireAuth from './features/auth/RequireAuth'
 import Prefetch from './features/auth/Prefetch'
 import Dashboard from './components/Dashboard'
+import BooksShowList from './features/books/BooksShowList'
 
 import UsersList from './features/users/UsersList'
 import BooksList from './features/books/BooksList'
@@ -40,7 +41,15 @@ function App() {
                 </Route>
 
                 <Route element={<Dashboard />}>
+                  <Route path="books">
+                    <Route index element={<BooksShowList />} />
+                  </Route>
+                  <Route path="settings">
 
+                  </Route>
+                  <Route path="users">
+
+                  </Route>
                 </Route>
 
                 <Route path="/dash/userslist">
