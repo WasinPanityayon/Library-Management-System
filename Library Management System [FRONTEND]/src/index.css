@@ -316,7 +316,7 @@
 
 /* USERSLIST STYLES AND BOOKSLIST STYLES */
 
-/* FORM NEWUSER STYLES */
+/* FORM NEW/EDIT USER  STYLES */
 
   .form {
     display: flex;
@@ -361,4 +361,16 @@
     outline: 1px solid #F00;
   }
 
-/* FORM NEWUSER STYLES */
+  .form__checkbox {
+    width: 24px;
+    height: 24px;
+  }
+
+  .form__checkbox-container {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    gap: 0.5em;
+  }
+
+/* FORM NEW/EDIT USER STYLES */
