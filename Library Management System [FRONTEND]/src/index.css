@@ -376,7 +376,7 @@
 
 /* FORM NEW/EDIT USER/BOOK STYLES */
 
-/* SIGNIN AUTHEN STYLES */
+/* SIGNIN/SIGNUP AUTHEN STYLES */
 
   .public_signin {
     padding: 3vw;
@@ -435,4 +435,33 @@
     cursor: pointer;
   }
 
-/* SIGNIN AUTHEN STYLES */
+  .public_form__input--incomplete {
+    border: 1px solid #F00;
+    outline: 1px solid #F00;
+  }
+
+  .public_form_name{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5em;
+  }
+
+  .publice_form__persist {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 0.5em;
+  }
+
+  .public_form__checkbox {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .public_form__checkbox:hover {
+    cursor: pointer;
+  }
+
+/* SIGNIN/SIGNUP AUTHEN STYLES */
