@@ -8,7 +8,11 @@ const BooksList = () => {
         isSuccess,
         isError,
         error
-    } = useGetBooksQuery()
+    } = useGetBooksQuery('booksList', {
+        pollingInterval: 15000,
+        refetchOnFocus: true,
+        refetchOnMountOrArgChange: true
+    })
     
     let content
 
