@@ -3,6 +3,8 @@ import { useNavigate, Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setCredentials } from './authSlice'
 import { useSigninMutation } from './authApiSlice'
+import usePersist from '../../hooks/usePersist'
+import PulseLoader from 'react-spinners/PulseLoader'
 import { toast } from 'react-toastify';
 
 const Signin = () => {
@@ -12,11 +14,12 @@ const Signin = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [errMsg, setErrMsg] = useState('')
+    const [persist, setPersist] = usePersist()
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const [signin] = useSigninMutation()
+    const [signin, { isLoading }] = useSigninMutation()
 
     useEffect(() => {
         userRef.current.focus()
@@ -76,7 +79,9 @@ const Signin = () => {
 
     const handleUserInput = (e) => setUsername(e.target.value)
     const handlePwdInput = (e) => setPassword(e.target.value)
+    const handleToggle = () => setPersist(prev => !prev)
 
+    if (isLoading) return <PulseLoader color={"#FFF"} />
 
     const content = (
         <section className="public_signin">
@@ -111,6 +116,17 @@ const Signin = () => {
                             />
                             <button className="public_form__submit-button">SIGN IN</button>
 
+
+                            <label htmlFor="persist" className="publice_form__persist">
+                                <input
+                                    type="checkbox"
+                                    className="public_form__checkbox"
+                                    id="persist"
+                                    onChange={handleToggle}
+                                    checked={persist}
+                                />
+                                Trust This Device
+                            </label>
                         </form>
                     </main>
                 </section>
