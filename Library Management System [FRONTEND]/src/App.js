@@ -11,6 +11,9 @@ import RequireAuth from './features/auth/RequireAuth'
 import Prefetch from './features/auth/Prefetch'
 import Dashboard from './components/Dashboard'
 import BooksShowList from './features/books/BooksShowList'
+import BookDetail from './features/books/BookDetail';
+import NewBook from './features/books/NewBook';
+import EditBooklib from './features/books/EditBooklib';
 
 import UsersList from './features/users/UsersList'
 import BooksList from './features/books/BooksList'
@@ -41,9 +44,7 @@ function App() {
                 </Route>
 
                 <Route element={<Dashboard />}>
-                  <Route path="books">
-                    <Route index element={<BooksShowList />} />
-                  </Route>
+                    <Route path="new" element={<NewBook />} />
                   <Route path="settings">
 
                   </Route>
@@ -51,6 +52,17 @@ function App() {
 
                   </Route>
                 </Route>
+
+                <Route path="books">
+                  <Route element={<Dashboard />}>
+                    <Route index element={<BooksShowList />} />
+                  </Route>
+                  <Route path=":id" element={<BookDetail />} />
+                  <Route path="new" element={<NewBook />} />
+                  <Route path="edit/:id" element={<EditBooklib />} />
+                </Route>
+
+
 
                 <Route path="/dash/userslist">
                   <Route index element={<UsersList />} />
@@ -62,6 +74,8 @@ function App() {
                   <Route path="new" element={<NewBookForm />} />
                   <Route path=":id" element={<EditBook />} />
                 </Route>
+
+
 
               </Route>
             </Route>

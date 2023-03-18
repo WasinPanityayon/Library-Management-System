@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDeleteBookMutation, useUpdateBookMutation } from "./booksApiSlice"
 
-const EditBookForm = ({ book }) => {
+const EditBooklibForm = ({ book }) => {
 
     const [updateBook, {
         isLoading,
@@ -147,4 +147,4 @@ const EditBookForm = ({ book }) => {
     return content
 }
 
-export default EditBookForm
+export default EditBooklibForm
