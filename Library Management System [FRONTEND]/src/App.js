@@ -14,6 +14,8 @@ import BooksShowList from './features/books/BooksShowList'
 import BookDetail from './features/books/BookDetail';
 import NewBook from './features/books/NewBook';
 import EditBooklib from './features/books/EditBooklib';
+import Usercheck from './features/users/Usercheck';
+import EditCurrentUser from './features/users/EditCurrentUser';
 
 import UsersList from './features/users/UsersList'
 import BooksList from './features/books/BooksList'
@@ -43,16 +45,6 @@ function App() {
                   <Route index element={<Homepage />} />
                 </Route>
 
-                <Route element={<Dashboard />}>
-                    <Route path="new" element={<NewBook />} />
-                  <Route path="settings">
-
-                  </Route>
-                  <Route path="users">
-
-                  </Route>
-                </Route>
-
                 <Route path="books">
                   <Route element={<Dashboard />}>
                     <Route index element={<BooksShowList />} />
@@ -60,6 +52,17 @@ function App() {
                   <Route path=":id" element={<BookDetail />} />
                   <Route path="new" element={<NewBook />} />
                   <Route path="edit/:id" element={<EditBooklib />} />
+                </Route>
+
+                <Route element={<Dashboard />}>
+                    <Route path="new" element={<NewBook />} />
+                  <Route path="settings">
+
+                  </Route>
+                  <Route path="users">
+                    <Route index element={<Usercheck />} />
+                    <Route path=":id" element={<EditCurrentUser />} />
+                  </Route>
                 </Route>
 
 
