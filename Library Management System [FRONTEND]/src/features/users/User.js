@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate } from 'react-router-dom'
-import { useGetUsersQuery } from '../users/usersApiSlice'
 import { memo } from 'react'
+import { useGetUsersQuery } from './usersApiSlice'
 
 const User = ({ userId }) => {
 

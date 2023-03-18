@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react"
-import { useUpdateUserMutation, useDeleteUserMutation } from "./usersApiSlice"
+import { useUpdateUserMutation, useDeleteUserMutation } from "../users/usersApiSlice"
 import { useNavigate } from "react-router-dom"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { ROLES } from "../../config/roles"
+import useAuth from "../../hooks/useAuth"
 
-const USER_REGEX = /^[A-z]{3,20}$/
-const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/
+const NAME_REGEX = /^[A-z]{1,50}$/
+const USER_REGEX = /^[A-z0-9]{3,20}$/
+const PWD_REGEX = /^[A-z0-9!@#$%*_.-]{4,12}$/
 
 const EditUserForm = ({ user }) => {
+    const { isAdmin } = useAuth()
 
     const [updateUser, {
         isLoading,
@@ -25,12 +26,24 @@ const EditUserForm = ({ user }) => {
 
     const navigate = useNavigate()
 
+    const [firstname, setFirstname] = useState(user.firstname)
+    const [validFirstname, setValidFirstname] = useState(false)
+    const [surname, setSurname] = useState(user.surname)
+    const [validSurname, setValidSurname] = useState(false)
     const [username, setUsername] = useState(user.username)
     const [validUsername, setValidUsername] = useState(false)
     const [password, setPassword] = useState('')
     const [validPassword, setValidPassword] = useState(false)
     const [roles, setRoles] = useState(user.roles)
     const [active, setActive] = useState(user.active)
+
+    useEffect(() => {
+        setValidFirstname(NAME_REGEX.test(firstname))
+    }, [firstname])
+
+    useEffect(() => {
+        setValidSurname(NAME_REGEX.test(surname))
+    }, [surname])
 
     useEffect(() => {
         setValidUsername(USER_REGEX.test(username))
@@ -43,14 +56,18 @@ const EditUserForm = ({ user }) => {
     useEffect(() => {
         console.log(isSuccess)
         if (isSuccess || isDelSuccess) {
+            setFirstname('')
+            setSurname('')
             setUsername('')
             setPassword('')
             setRoles([])
-            navigate('/dash/users')
+            navigate('/settings/userslist')
         }
 
     }, [isSuccess, isDelSuccess, navigate])
 
+    const onFirstnameChanged = e => setFirstname(e.target.value)
+    const onSurnameChanged = e => setSurname(e.target.value)
     const onUsernameChanged = e => setUsername(e.target.value)
     const onPasswordChanged = e => setPassword(e.target.value)
 
@@ -66,9 +83,9 @@ const EditUserForm = ({ user }) => {
 
     const onSaveUserClicked = async (e) => {
         if (password) {
-            await updateUser({ id: user.id, username, password, roles, active })
+            await updateUser({ id: user.id, firstname, surname, username, password, roles, active })
         } else {
-            await updateUser({ id: user.id, username, roles, active })
+            await updateUser({ id: user.id, firstname, surname, username, roles, active })
         }
     }
 
@@ -88,18 +105,64 @@ const EditUserForm = ({ user }) => {
 
     let canSave
     if (password) {
-        canSave = [roles.length, validUsername, validPassword].every(Boolean) && !isLoading
+        canSave = [roles.length, validFirstname, validSurname, validUsername, validPassword].every(Boolean) && !isLoading
     } else {
-        canSave = [roles.length, validUsername].every(Boolean) && !isLoading
+        canSave = [roles.length, validFirstname, validSurname, validUsername].every(Boolean) && !isLoading
     }
 
     const errClass = (isError || isDelError) ? "errmsg" : "offscreen"
+    const validFirstnameClass = !validFirstname ? 'public_form__input--incomplete' : ''
+    const validSurnameClass = !validSurname ? 'public_form__input--incomplete' : ''
     const validUserClass = !validUsername ? 'form__input--incomplete' : ''
     const validPwdClass = password && !validPassword ? 'form__input--incomplete' : ''
     const validRolesClass = !Boolean(roles.length) ? 'form__input--incomplete' : ''
 
     const errContent = (error?.data?.message || delerror?.data?.message) ?? ''
 
+    let rolesselect = null
+    if (isAdmin){
+        rolesselect = (
+            <>
+                <label className="form__label form__checkbox-container" htmlFor="user-active">
+                    ACTIVE:
+                    <input
+                        className="form__checkbox"
+                        id="user-active"
+                        name="user-active"
+                        type="checkbox"
+                        checked={active}
+                        onChange={onActiveChanged}
+                    />
+                </label>
+                <label className="form__label" htmlFor="roles">
+                    ASSIGNED ROLES:
+                </label>
+                <select
+                    id="roles"
+                    name="roles"
+                    className={`form__select ${validRolesClass}`}
+                    multiple={true}
+                    size="3"
+                    value={roles}
+                    onChange={onRolesChanged}
+                >
+                    {options}
+                </select>
+            </>
+        )
+    }
+    let deletebutton = null
+    if (isAdmin){
+        deletebutton = (
+            <button
+                className="button_og"
+                title="Delete"
+                onClick={onDeleteUserClicked}
+            >
+                Delete
+            </button>
+        )
+    }
 
     const content = (
         <>
@@ -108,24 +171,29 @@ const EditUserForm = ({ user }) => {
             <form className="form" onSubmit={e => e.preventDefault()}>
                 <div className="form__title-row">
                     <h2>Edit User</h2>
-                    <div className="form__action-buttons">
-                        <button
-                            className="icon-button"
-                            title="Save"
-                            onClick={onSaveUserClicked}
-                            disabled={!canSave}
-                        >
-                            <FontAwesomeIcon icon={faSave} />
-                        </button>
-                        <button
-                            className="icon-button"
-                            title="Delete"
-                            onClick={onDeleteUserClicked}
-                        >
-                            <FontAwesomeIcon icon={faTrashCan} />
-                        </button>
-                    </div>
                 </div>
+                <label className="form__label" htmlFor="firstname">
+                    Username: <span className="nowrap">[3-20 letters]</span></label>
+                <input
+                    className={`form__input ${validFirstnameClass}`}
+                    id="firstname"
+                    name="firstname"
+                    type="text"
+                    autoComplete="off"
+                    value={firstname}
+                    onChange={onFirstnameChanged}
+                />
+                <label className="form__label" htmlFor="surname">
+                    Username: <span className="nowrap">[3-20 letters]</span></label>
+                <input
+                    className={`form__input ${validSurnameClass}`}
+                    id="surname"
+                    name="surname"
+                    type="text"
+                    autoComplete="off"
+                    value={surname}
+                    onChange={onSurnameChanged}
+                />
                 <label className="form__label" htmlFor="username">
                     Username: <span className="nowrap">[3-20 letters]</span></label>
                 <input
@@ -148,34 +216,19 @@ const EditUserForm = ({ user }) => {
                     value={password}
                     onChange={onPasswordChanged}
                 />
-
-                <label className="form__label form__checkbox-container" htmlFor="user-active">
-                    ACTIVE:
-                    <input
-                        className="form__checkbox"
-                        id="user-active"
-                        name="user-active"
-                        type="checkbox"
-                        checked={active}
-                        onChange={onActiveChanged}
-                    />
-                </label>
-
-                <label className="form__label" htmlFor="roles">
-                    ASSIGNED ROLES:</label>
-                <select
-                    id="roles"
-                    name="roles"
-                    className={`form__select ${validRolesClass}`}
-                    multiple={true}
-                    size="3"
-                    value={roles}
-                    onChange={onRolesChanged}
-                >
-                    {options}
-                </select>
-
+                {rolesselect}
             </form>
+            <div className="edituserform">
+                <button
+                    className="button_og"
+                    title="Save"
+                    onClick={onSaveUserClicked}
+                    disabled={!canSave}
+                >
+                    Save
+                </button>
+                {deletebutton}
+            </div>
         </>
     )
 

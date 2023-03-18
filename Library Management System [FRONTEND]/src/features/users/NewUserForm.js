@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react"
-import { useAddNewUserMutation } from "../users/usersApiSlice"
 import { useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave } from "@fortawesome/free-solid-svg-icons"
+import { useAddNewUserMutation } from "./usersApiSlice"
 import { ROLES } from "../../config/roles"
+import useTitle from "../../hooks/useTitle"
 
 const NAME_REGEX = /^[A-z]{1,50}$/
 const USER_REGEX = /^[A-z0-9]{3,20}$/
 const PWD_REGEX = /^[A-z0-9!@#$%*_.-]{4,12}$/
 
 const NewUserForm = () => {
+    useTitle('LMS | NEW USER')
 
     const [addNewUser, {
         isLoading,
@@ -53,7 +55,7 @@ const NewUserForm = () => {
             setUsername('')
             setPassword('')
             setRoles([])
-            navigate('/dash/userslist')
+            navigate('/users')
         }
     }, [isSuccess, navigate])
 
@@ -64,7 +66,7 @@ const NewUserForm = () => {
 
     const onRolesChanged = e => {
         const values = Array.from(
-            e.target.selectedOptions,
+            e.target.selectedOptions, //HTMLCollection 
             (option) => option.value
         )
         setRoles(values)

@@ -1,8 +1,11 @@
+import PulseLoader from 'react-spinners/PulseLoader'
 import { useGetUsersQuery } from "./usersApiSlice"
 import User from './User'
+import useTitle from "../../hooks/useTitle"
 
 const UsersList = () => {
-    
+    useTitle('LMS | USERS LIST')
+
     const {
         data: users,
         isLoading,
@@ -17,13 +20,14 @@ const UsersList = () => {
 
     let content
 
-    if (isLoading) content = <p>Loading...</p>
+    if (isLoading) content = <PulseLoader color={"#FFF"} />
 
     if (isError) {
         content = <p className="errmsg">{error?.data?.message}</p>
     }
 
     if (isSuccess) {
+
         const { ids } = users
 
         const tableContent = ids?.length && ids.map(userId => <User key={userId} userId={userId} />)
@@ -47,6 +51,5 @@ const UsersList = () => {
     }
 
     return content
-
 }
 export default UsersList
