@@ -260,7 +260,7 @@
 
 /* HOMEPAGE FOOTER STYLES */
 
-/* USERSLIST STYLES */
+/* USERSLIST STYLES AND BOOKSLIST STYLES */
 
   thead,
   tbody,
@@ -301,4 +301,17 @@
     background-color: var(--INACTIVE);
   }
 
-/* USERSLIST STYLES */
+  .book__img {
+    width: 7vw;
+  }
+
+  .table_book {
+    font-size: 1rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 11vw 11vw 11vw 11vw 11vw 11vw;
+    color: var(--TABLE-COLOR);
+    gap: 0.1vw;
+  }
+
+/* USERSLIST STYLES AND BOOKSLIST STYLES */
