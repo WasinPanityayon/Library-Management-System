@@ -8,7 +8,7 @@ const Prefetch = () => {
 
     useEffect(() => {
         console.log('subscribing')
-        const books = store.dispatch(booksApiSlice.endpoints.getbooks.initiate())
+        const books = store.dispatch(booksApiSlice.endpoints.getBooks.initiate())
         const users = store.dispatch(usersApiSlice.endpoints.getUsers.initiate())
 
         return () => {
