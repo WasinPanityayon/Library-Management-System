@@ -79,11 +79,6 @@ const deleteUser = async (req, res) => {
         return res.status(400).json({ message: 'User ID Required' })
     }
 
-    const book = await Book.findOne({ user: id }).lean().exec()
-    if (book) {
-        return res.status(400).json({ message: 'User has assigned books' })
-    }
-
     const user = await User.findById(id).exec()
 
     if (!user) {

@@ -3,13 +3,9 @@ const AutoIncrement = require('mongoose-sequence')(mongoose)
 
 const bookSchema = new mongoose.Schema(
     {
-        bookno: {
+        imagebook: {
             type: String,
-            required: true
-        },
-        isbn: {
-            type: String,
-            required: true
+            required: false
         },
         title: {
             type: String,
@@ -17,27 +13,20 @@ const bookSchema = new mongoose.Schema(
         },
         author: {
             type: String,
-            required: true
+            required: false
         },
-        status: {
-            type: Boolean,
-            default: false
-        },
-        usercheckout: {
-            type: mongoose.Schema.Types.ObjectId,
-            required: true,
-            ref: 'User'
+        isbn: {
+            type: String,
+            required: false
         }
-    },
-    {
-        timestamps: true
     }
 )
 
 bookSchema.plugin(AutoIncrement, {
     inc_field: 'ticket',
     id: 'ticketNums',
-    start_seq: 500
+    start_seq: 100
 })
+
 
 module.exports = mongoose.model('Book', bookSchema)
