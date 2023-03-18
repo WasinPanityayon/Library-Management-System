@@ -1,6 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import useAuth from "../hooks/useAuth";
 
 const HomepageFooter = () => {
+  const { username, status } = useAuth();
+  
 
   const [realtimeToday, setRealtimeToday] = useState(
     new Intl.DateTimeFormat("en-US", {
@@ -31,8 +34,8 @@ const HomepageFooter = () => {
       </section>
       <footer className="homepage_footer">
         <nav className="homepage_footer_nav">
-          <p className="text">Current User: </p>
-          <p className="text">Status: </p>
+          <p className="text">Current User: {username}</p>
+          <p className="text">Status: {status}</p>
         </nav>
         <nav className="homepage_footer_nav">
           <p className="text">{realtimeToday}</p>
