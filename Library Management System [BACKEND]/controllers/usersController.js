@@ -41,9 +41,9 @@ const createNewUser = async (req, res) => {
 }
 
 const updateUser = async (req, res) => {
-    const { id, username, roles, active, password } = req.body
+    const { id, firstname, surname, username, roles, active, password } = req.body
 
-    if (!id || !username || !Array.isArray(roles) || !roles.length || typeof active !== 'boolean') {
+    if (!id || !firstname || !surname || !username || !Array.isArray(roles) || !roles.length || typeof active !== 'boolean') {
         return res.status(400).json({ message: 'All fields except password are required' })
     }
 
@@ -59,6 +59,8 @@ const updateUser = async (req, res) => {
         return res.status(409).json({ message: 'Duplicate username' })
     }
 
+    user.firstname = firstname
+    user.surname = surname
     user.username = username
     user.roles = roles
     user.active = active

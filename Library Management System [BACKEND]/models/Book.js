@@ -28,5 +28,4 @@ bookSchema.plugin(AutoIncrement, {
     start_seq: 100
 })
 
-
 module.exports = mongoose.model('Book', bookSchema)
