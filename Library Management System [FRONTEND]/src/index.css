@@ -91,12 +91,13 @@
   }
 
   a:any-link {
-  color: whitesmoke;
+    color: black;
   }
 
   a:hover,
   a:focus-visible {
-  color: rgba(245, 245, 245, 0.9);
+    color: #675454;
+    cursor: pointer;
   }
 
 /* GENERAL STYLES */
@@ -316,7 +317,7 @@
 
 /* USERSLIST STYLES AND BOOKSLIST STYLES */
 
-/* FORM NEW/EDIT USER  STYLES */
+/* FORM NEW/EDIT USER/BOOK STYLES */
 
   .form {
     display: flex;
@@ -373,4 +374,65 @@
     gap: 0.5em;
   }
 
-/* FORM NEW/EDIT USER STYLES */
+/* FORM NEW/EDIT USER/BOOK STYLES */
+
+/* SIGNIN AUTHEN STYLES */
+
+  .public_signin {
+    padding: 3vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .public_signin_container{
+    padding: 1.5vw;
+  }
+
+  .public_signin .text{
+    display: flex;
+    justify-content: flex-start;
+    font-size: 2vw;
+  }
+
+  .signin {
+    padding: 1.5em;
+    background-color: white;
+    border-radius: 18px;
+  }
+
+  .public_form {
+    display: flex;
+    flex-flow: column;
+    gap: 0.5em;
+    min-width: 30vw;
+  }
+
+  .public_form__input{
+    padding: 0.2em;
+    border-radius: 15px;
+    width: 100%;
+    background-color: #e1e1e1;
+  }
+  .public_form__input--error {
+    background-color: red
+  }
+
+  .public_form__submit-button {
+    padding: 0.2em;
+    border-radius: 15px;
+    background-color: #36BBCD;
+  }
+  
+  
+  .public_form__submit-button:active {
+    background-color: #257d93;
+    color: white;
+  }
+  
+  .public_form__submit-button:hover {
+    transform: scale(1.01);
+    cursor: pointer;
+  }
+
+/* SIGNIN AUTHEN STYLES */
