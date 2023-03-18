@@ -1,9 +1,21 @@
+import { useEffect } from 'react'
 import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useNavigate } from "react-router-dom"
+import { useSendSignoutMutation } from '../features/auth/authApiSlice'
 
 const HomepageHeader = () => {
     const navigate = useNavigate()
+
+    const [sendSignout, {
+        isSuccess,
+        isError,
+        error
+    }] = useSendSignoutMutation()
+
+    useEffect(() => {
+        if (isSuccess) navigate('/')
+    }, [isSuccess, navigate])
 
     const onbooksClicked = () => navigate('/books')
     const ontransectionsClicked = () => navigate('/books')
@@ -11,7 +23,6 @@ const HomepageHeader = () => {
     const onusersClicked = () => navigate('/users')
     const onsigninClicked = () => navigate('/signin')
     const onsignupClicked = () => navigate('/signup')
-    const onsignoutClicked = () => navigate('/signout')
 
     let booksButton = (
         <button
@@ -78,11 +89,13 @@ const HomepageHeader = () => {
         <button
             className="icon_button"
             title="Signout"
-            onClick={onsignoutClicked}
+            onClick={sendSignout}
         >
             <FontAwesomeIcon icon={faArrowRightFromBracket} />
         </button>
     )
+
+    const errClass = isError ? "errmsg" : "offscreen"
 
     let buttonContentLeft = (
         <>
@@ -103,6 +116,7 @@ const HomepageHeader = () => {
 
     const content = (
         <>
+            <p className={errClass}>{error?.data?.message}</p>
             <header className="homepage_header">
                 <div className={`homepage_header_container`}>
                     <nav className="homepage_header_nav">
